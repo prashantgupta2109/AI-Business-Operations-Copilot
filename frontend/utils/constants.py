@@ -1,10 +1,10 @@
 import streamlit as st
 
-# Check if BACKEND_URL exists in Streamlit Secrets (for cloud deployment),
-# otherwise fall back to localhost (for local development).
-if "BACKEND_URL" in st.secrets:
-    BACKEND_URL = st.secrets["BACKEND_URL"]
-else:
+# Safe retrieval of BACKEND_URL.
+# If running locally (no secrets file), it will catch the error and fall back to localhost.
+try:
+    BACKEND_URL = st.secrets.get("BACKEND_URL", "http://localhost:8000")
+except Exception:
     BACKEND_URL = "http://localhost:8000"
 
 # Agent pipeline metadata
