@@ -1,0 +1,55 @@
+Acme Corp — Financial Report: Q1 2024 (January – March 2024)
+
+Executive Summary:
+Q1 2024 was a strong quarter for Acme Corp, with total revenue reaching INR 12.4 Crore, representing a 23% year-over-year growth. Operating profit stood at INR 2.8 Crore (margin: 22.6%). Customer acquisition increased by 18% compared to Q1 2023.
+
+Revenue Breakdown:
+- SaaS Subscriptions: INR 7.2 Crore (58% of total revenue)
+- Professional Services: INR 3.1 Crore (25% of total revenue)
+- Licensing: INR 1.5 Crore (12% of total revenue)
+- Other: INR 0.6 Crore (5% of total revenue)
+
+Top Revenue-Generating Regions:
+1. Mumbai: INR 3.8 Crore
+2. Bengaluru: INR 3.2 Crore
+3. Delhi NCR: INR 2.7 Crore
+4. Pune: INR 1.4 Crore
+5. Hyderabad: INR 1.3 Crore
+
+Expenses:
+- Employee Costs (salaries, benefits): INR 5.2 Crore
+- Infrastructure & Cloud: INR 1.8 Crore
+- Sales & Marketing: INR 1.6 Crore
+- R&D Investment: INR 0.7 Crore
+- General & Administrative: INR 0.3 Crore
+Total Expenses: INR 9.6 Crore
+
+Key Performance Indicators (KPIs):
+- Monthly Recurring Revenue (MRR): INR 4.1 Crore
+- Annual Recurring Revenue (ARR): INR 49.2 Crore
+- Customer Acquisition Cost (CAC): INR 18,500
+- Customer Lifetime Value (CLV): INR 2,40,000
+- Churn Rate: 2.1%
+- Net Revenue Retention (NRR): 118%
+- Gross Margin: 68%
+
+New Customers:
+Total new enterprise customers in Q1: 47
+Total new SMB customers in Q1: 312
+Customer base at end of Q1: 1,842 active accounts
+
+Product Performance:
+- Copilot Pro Plan: 68% of new signups
+- Copilot Business Plan: 24% of new signups
+- Copilot Starter Plan: 8% of new signups
+
+Outlook for Q2 2024:
+- Revenue target: INR 14.5 Crore (17% QoQ growth)
+- Planned hiring: 12 new engineers, 5 sales executives
+- New product launch: AI Workflow Automation module (April)
+- Target markets: Chennai, Ahmedabad, Kolkata
+
+Risks & Mitigations:
+- Risk: Market slowdown in IT spending. Mitigation: Focus on cost-saving ROI messaging.
+- Risk: Increased competition. Mitigation: Accelerate product differentiation.
+- Risk: Talent attrition. Mitigation: Revised compensation bands and ESOP grants.

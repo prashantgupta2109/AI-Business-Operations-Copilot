@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Global font */
+html, body, [class*="css"] {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Hero banner on homepage */
+.hero-header {
+    background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #3b82f6 100%);
+    padding: 2.5rem 2rem;
+    border-radius: 16px;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+.hero-header h1 { font-size: 2.2rem; font-weight: 700; color: white; margin: 0 0 0.4rem 0; }
+.hero-header p  { color: rgba(255,255,255,0.85); font-size: 1rem; margin: 0; }
+
+/* Page section headers */
+.page-header {
+    background: linear-gradient(135deg, #1e1e3a, #16213e);
+    border-left: 4px solid #6366f1;
+    padding: 1rem 1.25rem;
+    border-radius: 0 10px 10px 0;
+    margin-bottom: 1.5rem;
+}
+.page-header h2 { margin: 0; font-size: 1.3rem; color: #e2e8f0; }
+.page-header p  { margin: 0.25rem 0 0 0; font-size: 0.875rem; color: #94a3b8; }
+
+/* Metric / stat cards */
+.metric-card {
+    background: linear-gradient(135deg, #1e1e3a, #16213e);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+.metric-label {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.4rem;
+}
+.metric-value { font-size: 1.6rem; font-weight: 700; color: #e2e8f0; }
+.metric-sub   { font-size: 0.8rem; color: #64748b; margin-top: 0.2rem; }
+
+/* Chat message bubbles */
+.chat-user {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+    padding: 0.75rem 1.1rem;
+    border-radius: 16px 16px 4px 16px;
+    margin: 0.5rem 0 0.5rem auto;
+    max-width: 78%;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    display: block;
+    width: fit-content;
+    word-wrap: break-word;
+}
+.chat-assistant {
+    background: linear-gradient(135deg, #1e293b, #1e1e3a);
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    color: #e2e8f0;
+    padding: 0.75rem 1.1rem;
+    border-radius: 16px 16px 16px 4px;
+    margin: 0.5rem auto 0.5rem 0;
+    max-width: 85%;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    display: block;
+    width: fit-content;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+.chat-label {
+    font-size: 0.75rem;
+    color: #64748b;
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+}
+
+/* Agent pipeline step cards */
+.agent-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.875rem 1.25rem;
+    border-radius: 10px;
+    margin: 0.4rem 0;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    background: rgba(30, 30, 58, 0.5);
+    transition: all 0.2s ease;
+}
+.agent-icon  { font-size: 1.5rem; }
+.agent-name  { font-weight: 600; color: #e2e8f0; font-size: 0.95rem; }
+.agent-desc  { font-size: 0.8rem; color: #94a3b8; margin-top: 0.1rem; }
+.agent-time  { margin-left: auto; font-size: 0.8rem; color: #6366f1; font-weight: 600; }
+
+/* Source reference cards */
+.source-card {
+    background: rgba(30, 30, 58, 0.6);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    margin: 0.4rem 0;
+}
+.source-filename { font-weight: 600; color: #818cf8; font-size: 0.85rem; margin-bottom: 0.3rem; }
+.source-score    { font-size: 0.75rem; color: #64748b; float: right; }
+.source-text     { color: #cbd5e1; font-size: 0.85rem; line-height: 1.5; }
+
+/* Plan step items */
+.plan-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.4rem 0;
+}
+.plan-num {
+    background: #6366f1;
+    color: white;
+    min-width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+.plan-text { color: #e2e8f0; font-size: 0.9rem; line-height: 1.5; }
+
+/* Confidence badge */
+.badge {
+    display: inline-block;
+    padding: 0.2rem 0.65rem;
+    border-radius: 9999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+}
+
+/* Info / tip boxes */
+.info-box {
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    border-radius: 10px;
+    padding: 0.875rem 1rem;
+    font-size: 0.875rem;
+    color: #c7d2fe;
+    line-height: 1.6;
+}

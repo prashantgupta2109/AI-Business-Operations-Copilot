@@ -1,0 +1,46 @@
+Acme Corp — Standard Operating Procedure: Customer Support
+
+Objective:
+To ensure all customer queries, complaints, and requests are handled promptly, professionally, and to the satisfaction of the customer.
+
+Ticket Classification:
+P1 — Critical: System outage, data loss, security breach. SLA: 1 hour response, 4 hours resolution.
+P2 — High: Major feature not working, significant business impact. SLA: 2 hour response, 8 hours resolution.
+P3 — Medium: Minor feature issues, workaround available. SLA: 4 hour response, 24 hours resolution.
+P4 — Low: General queries, feature requests, informational. SLA: 8 hour response, 72 hours resolution.
+
+Escalation Procedure:
+Step 1: L1 Support Agent handles the ticket for up to 30 minutes.
+Step 2: If unresolved, escalate to L2 Technical Specialist with full context notes.
+Step 3: L2 has 2 hours to resolve. If not, escalate to L3 Engineering Team.
+Step 4: L3 team resolves or creates a hotfix. Customer is notified at every step.
+Step 5: Post-resolution, a Root Cause Analysis (RCA) is filed within 24 hours.
+
+Customer Communication Templates:
+
+Acknowledgement (send within SLA response time):
+"Dear [Customer Name], thank you for reaching out. We have received your request (Ticket #[ID]) and our team is actively working on it. Expected resolution: [ETA]. We will keep you updated."
+
+Resolution:
+"Dear [Customer Name], we are pleased to inform you that Ticket #[ID] has been resolved. [Summary of resolution]. Please let us know if you need any further assistance."
+
+Escalation Notification:
+"Dear [Customer Name], your issue requires specialized attention. We have escalated Ticket #[ID] to our senior team. Updated ETA: [New ETA]. We apologize for the inconvenience."
+
+Refund Policy:
+Refunds are processed within 7 business days for eligible requests.
+Subscription refunds are prorated based on unused days.
+One-time purchase refunds are allowed within 30 days of purchase.
+Refund requests must be submitted via the customer portal or support email.
+
+Quality Assurance:
+All P1 and P2 tickets are reviewed by the QA team after resolution.
+Customer satisfaction (CSAT) surveys are sent after every resolved ticket.
+Target CSAT score is 4.2/5.0. Scores below 3.0 trigger a manager review.
+Monthly support reports are shared with the leadership team.
+
+Tools Used:
+- Zendesk: Ticket management
+- Slack #support-team: Internal communication
+- Confluence: Knowledge base
+- PagerDuty: On-call alerting for P1 incidents

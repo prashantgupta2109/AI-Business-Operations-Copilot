@@ -1,0 +1,31 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments & virtualenvs
+.venv/
+venv/
+ENV/
+env/
+
+# Vector Index Data (regenerated on startup)
+backend/faiss_index/
+
+# Local Environment configuration (Contains local URLs/paths)
+backend/.env
+frontend/.env
+
+# IDE / Editor folders
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
