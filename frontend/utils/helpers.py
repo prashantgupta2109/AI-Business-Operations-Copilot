@@ -1,3 +1,5 @@
+from pathlib import Path
+
 def confidence_label(score: float) -> tuple[str, str]:
     """Return (label, hex_color) based on a 0-1 confidence score."""
     if score >= 0.7:
@@ -20,10 +22,20 @@ def total_pipeline_time(timing: dict) -> float:
     return round(sum(timing.values()), 2)
 
 
-def load_css(path: str) -> str:
-    """Read a CSS file and return its content."""
+def load_css(path_str: str) -> str:
+    """
+    Read a CSS file relative to the frontend directory.
+    Works correctly both locally and on Streamlit Cloud.
+    """
+    # Get the directory of helpers.py, then go up to the frontend folder
+    frontend_dir = Path(__file__).resolve().parent.parent
+    file_path = frontend_dir / path_str
+
     try:
-        with open(path, encoding="utf-8") as f:
-            return f.read()
+        return file_path.read_text(encoding="utf-8")
     except FileNotFoundError:
-        return ""
+        # Fallback to direct path check
+        try:
+            return Path(path_str).read_text(encoding="utf-8")
+        except FileNotFoundError:
+            return ""
