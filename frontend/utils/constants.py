@@ -1,5 +1,11 @@
-# Backend API URL
-BACKEND_URL = "http://localhost:8000"
+import streamlit as st
+
+# Check if BACKEND_URL exists in Streamlit Secrets (for cloud deployment),
+# otherwise fall back to localhost (for local development).
+if "BACKEND_URL" in st.secrets:
+    BACKEND_URL = st.secrets["BACKEND_URL"]
+else:
+    BACKEND_URL = "http://localhost:8000"
 
 # Agent pipeline metadata
 AGENTS = [
