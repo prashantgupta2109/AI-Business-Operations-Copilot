@@ -1,52 +1,65 @@
 import json
 from pathlib import Path
-
-import faiss
 import numpy as np
-
 from app.config.settings import settings
 
-_INDEX_FILE = "index.bin"
+_EMBEDDINGS_FILE = "embeddings.npy"
 _CHUNKS_FILE = "chunks.json"
 
 
 class FAISSStore:
-    """Manages a FAISS vector index and its associated text chunks."""
+    """
+    A pure NumPy-based drop-in replacement for the FAISS vector store.
+    Bypasses Windows Application Control DLL blocking by using standard NumPy array math.
+    """
 
     def __init__(self):
-        self.index: faiss.Index | None = None
+        self.embeddings: np.ndarray | None = None
         self.chunks: list[dict] = []  # [{text, filename, chunk_index}, ...]
 
     def build(self, chunks: list[dict], embeddings: np.ndarray) -> None:
-        """Build the FAISS index from chunks and their embeddings."""
+        """Build the vector index from chunks and their embeddings."""
         self.chunks = chunks
-        dimension = embeddings.shape[1]
-        self.index = faiss.IndexFlatL2(dimension)
-        self.index.add(embeddings.astype(np.float32))
+        self.embeddings = embeddings.astype(np.float32)
 
     def search(self, query_embedding: np.ndarray, k: int = 5) -> list[dict]:
-        """Return the top-k most similar chunks with relevance scores."""
-        if self.index is None or self.index.ntotal == 0:
+        """Return the top-k most similar chunks with relevance scores using L2 distance."""
+        if self.embeddings is None or len(self.embeddings) == 0:
             return []
 
-        k = min(k, self.index.ntotal)
-        distances, indices = self.index.search(query_embedding.astype(np.float32), k)
+        # query_embedding comes in as shape (1, 384) or (384,)
+        # Reshape query to match embeddings dimensions
+        query = query_embedding.astype(np.float32).reshape(1, -1)
 
+        # Calculate L2 distance squared (equivalent to faiss.IndexFlatL2)
+        # (embeddings - query)^2 summed across the columns (384 dimensions)
+        diff = self.embeddings - query
+        distances = np.sum(diff ** 2, axis=1)
+
+        # Sort indices by distance (ascending - closest first)
+        indices = np.argsort(distances)
+
+        k = min(k, len(self.chunks))
         results = []
-        for dist, idx in zip(distances[0], indices[0]):
-            if idx >= 0:
-                chunk = self.chunks[idx].copy()
-                # Normalize distance to a 0-1 confidence score
-                chunk["score"] = round(float(1 / (1 + dist)), 4)
-                results.append(chunk)
+        for idx in indices[:k]:
+            chunk = self.chunks[idx].copy()
+            dist = float(distances[idx])
+            # Normalize distance to a 0-1 confidence score
+            chunk["score"] = round(float(1 / (1 + dist)), 4)
+            results.append(chunk)
 
         return results
 
     def save(self) -> None:
-        """Persist the FAISS index and chunk metadata to disk."""
+        """Persist the index and chunk metadata to disk."""
         index_dir = Path(settings.FAISS_INDEX_DIR)
         index_dir.mkdir(exist_ok=True)
-        faiss.write_index(self.index, str(index_dir / _INDEX_FILE))
+        
+        # Save embeddings as a binary numpy array file
+        if self.embeddings is not None:
+            np.save(str(index_dir / _EMBEDDINGS_FILE), self.embeddings)
+            
+        # Save chunk metadata as JSON
         (index_dir / _CHUNKS_FILE).write_text(
             json.dumps(self.chunks, indent=2, ensure_ascii=False)
         )
@@ -54,18 +67,18 @@ class FAISSStore:
     def load(self) -> bool:
         """Load the index and chunk metadata from disk. Returns True if successful."""
         index_dir = Path(settings.FAISS_INDEX_DIR)
-        index_path = index_dir / _INDEX_FILE
+        embeddings_path = index_dir / _EMBEDDINGS_FILE
         chunks_path = index_dir / _CHUNKS_FILE
 
-        if not index_path.exists() or not chunks_path.exists():
+        if not embeddings_path.exists() or not chunks_path.exists():
             return False
 
         try:
-            self.index = faiss.read_index(str(index_path))
+            self.embeddings = np.load(str(embeddings_path))
             self.chunks = json.loads(chunks_path.read_text())
             return True
         except Exception as e:
-            print(f"Failed to load FAISS index: {e}")
+            print(f"Failed to load vector store: {e}")
             return False
 
     def total_chunks(self) -> int:
